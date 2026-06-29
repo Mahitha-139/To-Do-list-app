@@ -1,0 +1,11 @@
+const input = document.getElementById('taskInput'), list = document.getElementById('taskList'), btn = document.getElementById('addBtn');
+btn.addEventListener('click', () => {
+    if (input.value === "") return;
+    const li = document.createElement('li');
+    li.textContent = input.value;
+    li.addEventListener('click', () => li.classList.toggle('completed'));
+    const dBtn = document.createElement('button');
+    dBtn.textContent = 'X'; dBtn.className = 'delete-btn';
+    dBtn.addEventListener('click', (e) => { e.stopPropagation(); li.remove(); });
+    li.appendChild(dBtn); list.appendChild(li); input.value = '';
+});
